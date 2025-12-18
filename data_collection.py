@@ -4,7 +4,7 @@ import csv
 import os
 import numpy as np
 
-# Folder to store data
+
 DATA_DIR = 'data'
 if not os.path.exists(DATA_DIR):
     os.makedirs(DATA_DIR)
@@ -13,7 +13,7 @@ mp_hands = mp.solutions.hands
 mp_drawing = mp.solutions.drawing_utils
 hands = mp_hands.Hands(min_detection_confidence=0.7, min_tracking_confidence=0.7)
 
-# Enter gesture name
+
 gesture_name = input("Enter gesture name (e.g., Hello, Thanks, A, B): ").strip()
 gesture_dir = os.path.join(DATA_DIR, gesture_name)
 if not os.path.exists(gesture_dir):
@@ -40,7 +40,7 @@ while True:
                 landmarks.append(lm.x)
                 landmarks.append(lm.y)
 
-            # Save every 5th frame to reduce redundancy
+            
             if count % 5 == 0:
                 csv_path = os.path.join(gesture_dir, f"{count}.csv")
                 with open(csv_path, mode='w', newline='') as f:
